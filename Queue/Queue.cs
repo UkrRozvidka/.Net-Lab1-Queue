@@ -64,10 +64,12 @@ namespace Queue
 
         #region basic methods
 
-        public void Enqueue(QueueNode<T> newNode)
+        // Adds a new item to the tail of the queue
+        public void Enqueue(T item)
         {
-            if (newNode == null)
-                throw new ArgumentNullException(nameof(newNode));
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+            var newNode = new QueueNode<T>(item);
             if (count == 0)
             {
                 _head = newNode;
@@ -81,16 +83,12 @@ namespace Queue
                 _tail = newNode;
             }
             count++;
+
+            // Trigger the event to notify listeners that an element was added
             OnAddElement?.Invoke(this, new QueueEventArgs<T>(newNode.Value, "element was added to tail"));
         }
 
-        public void Enqueue(T item)
-        {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
-            Enqueue(new QueueNode<T>(item));
-        }
-
+        // Removes and returns the element at the head of the queue.
         public T Dequeue()
         {
             if (count == 0)
@@ -108,6 +106,8 @@ namespace Queue
                 _head = _head.Next;
             }
             count--;
+
+            // Trigger the event to notify listeners that an element was removed
             OnRemoveElement?.Invoke(this, new QueueEventArgs<T>(oldHeadValue, "element was removed from head"));
             return oldHeadValue;
         }
@@ -134,6 +134,7 @@ namespace Queue
             return false;
         }
 
+        // Retrieves the value of the element at the head of the queue without removing it
         public T Peek()
         {
             if (count == 0)
@@ -141,6 +142,8 @@ namespace Queue
             return _head!.Value;
         }
 
+        // Attempts to retrieve the value of the element at the head of the queue without removing it
+        // Returns true if successful, false if the queue is empty
         public bool TryPeek(out T? result)
         {
             if (count == 0)
@@ -152,6 +155,8 @@ namespace Queue
             return true;
         }
 
+        // Attempts to remove and return the element at the head of the queue
+        // Returns true if successful, false if the queue is empty
         public bool TryDequeue(out T? result)
         {
             if (count == 0)
