@@ -1,4 +1,8 @@
-﻿using Queue;
+﻿using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Toolchains.InProcess.Emit;
+using Queue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +13,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        var q = new System.Collections.Generic.Queue<int>();
-        var mq = new Queue.Queue<int>();
+        
+        BenchmarkRunner.Run<ArrayQueueVsLinkedListQueue>();
     }
 }
