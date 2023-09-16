@@ -9,6 +9,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-
+        var q = new System.Collections.Generic.Queue<int>();
+        var mq = new Queue.Queue<int>();
     }
 }

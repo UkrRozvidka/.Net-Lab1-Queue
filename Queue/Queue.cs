@@ -56,15 +56,15 @@ namespace Queue
 
             foreach (T item in collection)
             {
-                Add(item);
+                Enqueue(item);
             }
         }
 
         #endregion
 
-        #region add and remove methods
+        #region basic methods
 
-        public void Add(QueueNode<T> newNode)
+        public void Enqueue(QueueNode<T> newNode)
         {
             if (newNode == null)
                 throw new ArgumentNullException(nameof(newNode));
@@ -84,14 +84,14 @@ namespace Queue
             OnAddElement?.Invoke(this, new QueueEventArgs<T>(newNode.Value, "element was added to tail"));
         }
 
-        public void Add(T item)
+        public void Enqueue(T item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
-            Add(new QueueNode<T>(item));
+            Enqueue(new QueueNode<T>(item));
         }
 
-        public void Remove()
+        public T Dequeue()
         {
             if (count == 0)
                 throw new InvalidOperationException("empty");
@@ -109,6 +109,7 @@ namespace Queue
             }
             count--;
             OnRemoveElement?.Invoke(this, new QueueEventArgs<T>(oldHeadValue, "element was removed from head"));
+            return oldHeadValue;
         }
 
         public void Clear()
@@ -120,6 +121,46 @@ namespace Queue
             }
             _head = null;
             count = 0;
+        }
+
+        public bool Contains(T item)
+        {
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+            foreach(var t in this)
+            {
+                if(t!.Equals(item)) return true;
+            }
+            return false;
+        }
+
+        public T Peek()
+        {
+            if (count == 0)
+                throw new InvalidOperationException("queue is empty");
+            return _head!.Value;
+        }
+
+        public bool TryPeek(out T? result)
+        {
+            if (count == 0)
+            {
+                result = default;
+                return false;
+            }
+            result = _head!.Value;
+            return true;
+        }
+
+        public bool TryDequeue(out T? result)
+        {
+            if (count == 0)
+            {
+                result = default;
+                return false;
+            }
+            result = this.Dequeue();
+            return true;
         }
 
         #endregion
