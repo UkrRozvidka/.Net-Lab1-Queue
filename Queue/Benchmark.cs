@@ -10,17 +10,24 @@ using Benchmarks;
 namespace Queue
 {
 
-    [Config(typeof(AntiVirusFriendlyConfig))]
     [MemoryDiagnoser]
     public class ArrayQueueVsLinkedListQueue
     {
+        public ArrayQueueVsLinkedListQueue()
+        {
+            LinkedListQueue = new Queue<int>();
+            ArrayQueue = new System.Collections.Generic.Queue<int>();
+        }
+
         public Queue.Queue<int> LinkedListQueue {  get; set; }
         public System.Collections.Generic.Queue<int> ArrayQueue {  get; set; }
 
         private readonly Random random = new Random(Seed : 17);
 
-        [Params(1, 16, 512)]
+
+        [Params (10, 256, 1024)]
         public int count;
+
 
         [Benchmark]
         public void EnqueueLinkedListQueue()
@@ -32,7 +39,7 @@ namespace Queue
         }
 
         [Benchmark]
-         public void EnqueueArrayQueue() 
+        public void EnqueueArrayQueue() 
          {
             for (int i = 0; i < count; i++)
             {
