@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
-using Benchmarks;
 
 namespace Queue
 {
@@ -22,12 +21,9 @@ namespace Queue
         public Queue.Queue<int> LinkedListQueue {  get; set; }
         public System.Collections.Generic.Queue<int> ArrayQueue {  get; set; }
 
-        private readonly Random random = new Random(Seed : 17);
-
 
         [Params (10, 256, 1024)]
         public int count;
-
 
         [Benchmark]
         public void EnqueueLinkedListQueue()
