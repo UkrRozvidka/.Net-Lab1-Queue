@@ -22,7 +22,7 @@ namespace Queue
         public System.Collections.Generic.Queue<int> ArrayQueue {  get; set; }
 
 
-        [Params (10, 256, 1024)]
+        [Params (10, 256)]
         public int count;
 
         [Benchmark]
