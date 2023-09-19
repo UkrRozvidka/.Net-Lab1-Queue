@@ -13,7 +13,6 @@ class Program
 {
     public static void Main(string[] args)
     {
-        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueue>(); //uncoment to run benchmark
         Console.OutputEncoding = Encoding.Unicode;
         var q = new Queue.Queue<int>();
         var eventListener = new EventListener<int>();
