@@ -85,7 +85,7 @@ namespace Queue
             count++;
 
             // Trigger the event to notify listeners that an element was added
-            OnAddElement?.Invoke(this, new QueueEventArgs<T>(newNode.Value, "element was added to tail"));
+            OnAddElement?.Invoke(this, new QueueEventArgs<T>(newNode.Value, "element was added to tail"));                 
         }
 
         // Removes and returns the element at the head of the queue.
@@ -209,12 +209,12 @@ namespace Queue
             }
         }
 
-        bool ICollection.IsSynchronized
+                                                                                                                                                    bool ICollection.IsSynchronized
         {
             get { return false; }
         }
 
-        object ICollection.SyncRoot => this;
+                                                                                                                                         object ICollection.SyncRoot => this;
     }
 
     public sealed class QueueNode<T>
