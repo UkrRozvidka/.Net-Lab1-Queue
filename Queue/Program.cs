@@ -13,13 +13,13 @@ class Program
 {
     public static void Main(string[] args)
     {
-        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueue>(); //uncoment to run benchmark
-        Console.OutputEncoding = Encoding.Unicode;
-        var q = new Queue.Queue<int>();
-        var eventListener = new EventListener<int>();
-        q.OnAddElement += eventListener.OnAdd;
-        q.OnRemoveElement += eventListener.OnDelete;
-        var runner = new Runner(q);
-        runner.Run();
+        // UNCOMMENT CONCRETE BENCHMARK TO RUN IT
+        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueueEnqueueInt>();
+        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueueEnqueueLazy>();
+        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueueEnqueueLargeObject>();
+        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueueFullInt>();
+        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueueFullLazy>();
+        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueueFullLargeObject>();
+
     }
 }
