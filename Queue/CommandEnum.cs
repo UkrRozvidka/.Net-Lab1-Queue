@@ -8,12 +8,13 @@ namespace Queue
 {
     enum CommandEnum
     {
-        Enqueue,
+        Enqueue = 1,
         Dequeue,
         Contains,
         Clear,
         Peek,
         TryPeek,
-        TryDequeue
+        TryDequeue,
+        ShowAll
     }
 }

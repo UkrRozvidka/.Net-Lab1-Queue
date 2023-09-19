@@ -5,7 +5,6 @@ using BenchmarkDotNet.Toolchains.InProcess.Emit;
 using BenchmarkDotNet.Toolchains.InProcess.NoEmit;
 using Queue;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +13,10 @@ class Program
 {
     public static void Main(string[] args)
     {
-        BenchmarkRunner.Run<ArrayQueueVsLinkedListQueue>();
+        //BenchmarkRunner.Run<ArrayQueueVsLinkedListQueue>(); //uncoment to run benchmark
+        Console.OutputEncoding = Encoding.Unicode;
+        var q = new Queue.Queue<int>();
+        var runner = new Runner(q);
+        runner.Run();
     }
 }

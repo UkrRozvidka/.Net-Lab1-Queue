@@ -24,7 +24,7 @@ namespace Queue
           
         #region enqueue
 
-        //[Benchmark]
+        [Benchmark]
         public void EnqueueLinkedListQueue()
         {
             LinkedListQueue = new Queue<Lazy<int>>();
@@ -34,7 +34,7 @@ namespace Queue
             }    
         }
 
-        //[Benchmark]
+        [Benchmark]
         public void EnqueueArrayQueue() 
          {
             ArrayQueue = new System.Collections.Generic.Queue<Lazy<int>>();
@@ -48,7 +48,7 @@ namespace Queue
 
         #region dequeue
 
-        //[Benchmark]
+        [Benchmark]
         public void DequeueLinkedListQueue()
         {
             LinkedListQueue = new Queue.Queue<Lazy<int>>(Enumerable.Range(0, count)
@@ -59,7 +59,7 @@ namespace Queue
             }
         }
 
-        //[Benchmark]
+        [Benchmark]
         public void DequeueArrayQueue()
         {
             ArrayQueue = new System.Collections.Generic.Queue<Lazy<int>>(Enumerable.Range(0, count)

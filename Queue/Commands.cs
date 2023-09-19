@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,26 +8,29 @@ using System.Windows.Input;
 
 namespace Queue
 {
-    public class EnqueueCommand<T> : ICommand
+    public class EnqueueInt : ICommand
     {
-        private readonly Queue<T> queue;
-        private readonly T item;
+        private readonly Queue<int> queue;
 
-        public EnqueueCommand(Queue<T> queue, T item)
+        public EnqueueInt(Queue<int> queue)
         {
             this.queue = queue;
-            this.item = item;
         }
 
         public void Execute()
         {
-            Console.WriteLine("Введіть значення яке хочете додати: ");
-            var t = Console.ReadLine();
-            
-            if (item == null) throw new ArgumentNullException(nameof(item));
             if (queue == null) throw new ArgumentNullException(nameof(queue));
-            queue.Enqueue(item);
-            Console.WriteLine(item.ToString() + " було додано до колекції");
+            Console.Write("Введіть значення яке хочете додати: ");
+             
+            if(int.TryParse(Console.ReadLine(), out int item))
+            {
+                queue.Enqueue(item);
+                Console.WriteLine(item.ToString() + " було додано до колекції");
+            }
+            else
+            {
+                Console.WriteLine("Було введено невалідне значення");
+            }          
         }
     }
 
@@ -43,21 +47,25 @@ namespace Queue
         }
     }
 
-    public class Contains<T> : ICommand
+    public class ContainsInt : ICommand
     {
-        private readonly Queue<T> queue;
-        private readonly T item;
+        private readonly Queue<int> queue;
 
-        public Contains(Queue<T> queue, T item)
+
+        public ContainsInt(Queue<int> queue)
         {
             this.queue = queue;
-            this.item = item;
         }
 
         public void Execute()
         {
-            if (item == null) throw new ArgumentNullException(nameof(item));
+
             if (queue == null) throw new ArgumentNullException(nameof(queue));
+            Console.Write("Введіть значення яке хочете знайти: ");
+
+            if (!int.TryParse(Console.ReadLine(), out int item))
+                Console.WriteLine("Було введено невалідне значення");
+
             if (queue.Contains(item))
                 Console.WriteLine(item.ToString() + " знайдено в колекції");
             else
@@ -128,6 +136,21 @@ namespace Queue
             {
                 Console.WriteLine("Колекція пуста");
             }
+        }
+    }
+
+    public class ShowAll<T> : ICommand
+    {
+        private readonly Queue<T> queue;
+
+        public ShowAll(Queue<T> queue) => this.queue = queue;
+
+        public void Execute()
+        {
+            if (queue == null) throw new ArgumentNullException(nameof(queue));
+            foreach (T item in queue)
+                Console.Write($"{item}; ");
+            Console.WriteLine();    
         }
     }
 }
