@@ -209,12 +209,12 @@ namespace Queue
             }
         }
 
-                                                                                                                                                    bool ICollection.IsSynchronized
+        bool ICollection.IsSynchronized
         {
             get { return false; }
         }
 
-                                                                                                                                         object ICollection.SyncRoot => this;
+        object ICollection.SyncRoot => this;
     }
 
     public sealed class QueueNode<T>
