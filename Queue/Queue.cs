@@ -20,17 +20,6 @@ namespace Queue
         {
             get { return count; }
         }
-
-        public QueueNode<T>? First
-        {
-            get { return _head; }
-        }
-
-        public QueueNode<T>? Last
-        {
-            get { return _tail; }
-        }
-
         #endregion
 
         #region events
