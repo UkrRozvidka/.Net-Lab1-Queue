@@ -6,7 +6,7 @@ namespace Queue.Tests.QueueTests
     {
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void Contains_WhenElementExist_ShoudReturnTrue<T>(T[] objects)
+        public void Contains_WhenElementExist_ShouldReturnTrue<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 
@@ -14,9 +14,8 @@ namespace Queue.Tests.QueueTests
                 Assert.True(queue.Contains(item));
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void Contains_WhenElementExist_ShoudReturnFalse<T>(T[] objects)
+        [Theory] [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
+        public void Contains_WhenElementExist_ShouldReturnFalse<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 

@@ -6,7 +6,7 @@ namespace Queue.Tests.QueueTests
     {
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void Peek_WhenQueueNotEmpty_ShoudReturnFirstElementWithoutRemoving<T>(T[] objects)
+        public void Peek_WhenQueueNotEmpty_ShouldReturnFirstElementWithoutRemoving<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 
@@ -18,7 +18,7 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.EmptyQueues), MemberType = typeof(TestDataClass))]
-        public void Peek_WhenQueueEmpty_ShoudThrowInvalidOperationException<T>(Queue<T> queue)
+        public void Peek_WhenQueueEmpty_ShouldThrowInvalidOperationException<T>(Queue<T> queue)
         {
             Assert.Throws<InvalidOperationException>(() => queue.Peek());
         }

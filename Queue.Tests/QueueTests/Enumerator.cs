@@ -6,7 +6,7 @@ namespace Queue.Tests.QueueTests
     {
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void GetEnumerator_ShoudReturnElemntInCorrectOrder<T>(T[] objects)
+        public void GetEnumerator_ShouldReturnElementInCorrectOrder<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 
@@ -21,7 +21,7 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.EmptyQueues), MemberType = typeof(TestDataClass))]
-        public void GetEnumerator_WhenQueueEmpty_MoveNextShoudReturnFalse<T>(Queue<T> queue)
+        public void GetEnumerator_WhenQueueEmpty_MoveNextShouldReturnFalse<T>(Queue<T> queue)
         {
             var enumerator = queue.GetEnumerator();
             Assert.False(enumerator.MoveNext());

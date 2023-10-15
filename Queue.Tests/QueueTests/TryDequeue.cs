@@ -6,7 +6,7 @@ namespace Queue.Tests.QueueTests
     {
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void TryDequeue_WhenQueueNotEmpty_ShoudReturnTrueAndPutValueInParametrVariableWithRemoving<T>(T[] objects)
+        public void TryDequeue_WhenQueueNotEmpty_ShouldReturnTrueAndPutValueInParameterVariableWithRemoving<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 
@@ -19,7 +19,7 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.EmptyQueues), MemberType = typeof(TestDataClass))]
-        public void TryDequeue_WhenQueuуEmpty_ShoudReturnFalseAndPutDefaultValueInParametrVariable<T>(Queue<T> queue)
+        public void TryDequeue_WhenQueueEmpty_ShouldReturnFalseAndPutDefaultValueInParameterVariable<T>(Queue<T> queue)
         {
             var res = queue.TryDequeue(out T value);
 

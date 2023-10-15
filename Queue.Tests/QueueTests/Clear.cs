@@ -6,7 +6,7 @@ namespace Queue.Tests.QueueTests
     {
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void Clear_ShoudRemoveAllElements<T>(T[] objects)
+        public void Clear_ShouldRemoveAllElements<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 

@@ -6,7 +6,7 @@ namespace Queue.Tests.QueueTests
     {
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void TryPeek_WhenQueueNotEmpty_ShoudReturnTrueAndPutValueInParametrVariableWithoutRemoving<T>(T[] objects)
+        public void TryPeek_WhenQueueNotEmpty_ShouldReturnTrueAndPutValueInParameterVariableWithoutRemoving<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 
@@ -19,9 +19,9 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.EmptyQueues), MemberType = typeof(TestDataClass))]
-        public void TryPeek_WhenQueuуEmpty_ShoudReturnFalseAndPutDefaultValueInParametrVariable<T>(Queue<T> queue)
+        public void TryPeek_WhenQueueEmpty_ShouldReturnFalseAndPutDefaultValueInParameterVariable<T>(Queue<T?> queue)
         {
-            var res = queue.TryPeek(out T value);
+            var res = queue.TryPeek(out var value);
 
             Assert.False(res);
             Assert.Equal(value, default);

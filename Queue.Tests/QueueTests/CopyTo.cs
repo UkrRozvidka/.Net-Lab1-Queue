@@ -6,7 +6,7 @@ namespace Queue.Tests.QueueTests
     {
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void CopyTo_ShoudCopiesElements<T>(T[] objects)
+        public void CopyTo_ShouldCopiesElements<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
             var array = new T[objects.Length];
@@ -18,7 +18,7 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void CopyTo_ShoudStartsAtCorectIndex<T>(T[] objects)
+        public void CopyTo_ShouldStartsAtCorrectIndex<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
             var array = new T[objects.Length + 2];
@@ -32,7 +32,7 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.EmptyQueues), MemberType = typeof(TestDataClass))]
-        public void CopyTo_WhenIndexOutOfArrayRange_ShoudThrowIndexOutOfRangeExeption<T>(Queue<T> queue)
+        public void CopyTo_WhenIndexOutOfArrayRange_ShouldThrowIndexOutOfRangeException<T>(Queue<T> queue)
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => queue.CopyTo(new int[5], -1));
             Assert.Throws<ArgumentOutOfRangeException>(() => queue.CopyTo(new int[5], 5));
@@ -40,7 +40,7 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
-        public void CopyTo_WhenDestinationArrayHasNotEnoughSpace_ShoudThrowArgumentException<T>(T[] objects)
+        public void CopyTo_WhenDestinationArrayHasNotEnoughSpace_ShouldThrowArgumentException<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
 
@@ -49,7 +49,7 @@ namespace Queue.Tests.QueueTests
 
         [Theory]
         [MemberData(nameof(TestDataClass.EmptyQueues), MemberType = typeof(TestDataClass))]
-        public void CopyTo_WhenArrayMultidimensional_ShoudThrowArgumentExeption<T>(Queue<T> queue)
+        public void CopyTo_WhenArrayMultidimensional_ShouldThrowArgumentException<T>(Queue<T> queue)
         {
             Assert.Throws<ArgumentException>(() => queue.CopyTo(new int[2, 2], 0));
         }
