@@ -53,5 +53,12 @@ namespace Queue.Tests.QueueTests
         {
             Assert.Throws<ArgumentException>(() => queue.CopyTo(new int[2, 2], 0));
         }
+        
+        [Theory]
+        [MemberData(nameof(TestDataClass.EmptyQueues), MemberType = typeof(TestDataClass))]
+        public void CopyTo_WhenArrayNull_ShouldThrowArgumentNullException<T>(Queue<T> queue)
+        {
+            Assert.Throws<ArgumentNullException>(() => queue.CopyTo(null, 0));
+        }
     }
 }

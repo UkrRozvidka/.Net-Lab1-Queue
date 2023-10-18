@@ -14,7 +14,8 @@ namespace Queue.Tests.QueueTests
                 Assert.True(queue.Contains(item));
         }
 
-        [Theory] [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
+        [Theory] 
+        [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
         public void Contains_WhenElementExist_ShouldReturnFalse<T>(T[] objects)
         {
             var queue = new Queue<T>(objects);
@@ -24,6 +25,16 @@ namespace Queue.Tests.QueueTests
                 var element = queue.Dequeue();
                 Assert.False(queue.Contains(element));
             }
+        }
+        
+        [Theory] 
+        [MemberData(nameof(TestDataClass.TestData), MemberType = typeof(TestDataClass))]
+        public void Contains_WhenElementNull_ShouldReturnFalse<T>(T?[] objects)
+        {
+            var queue = new Queue<T>(objects);
+            var item = default(T);
+            if(item is not ValueType)
+                Assert.Throws<ArgumentNullException>(() => queue.Contains(item));
         }
     }
 }
